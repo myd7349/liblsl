@@ -245,7 +245,7 @@ extern LIBLSL_C_API int32_t lsl_wait_for_consumers(lsl_outlet out, double timeou
  * fields assigned).
  * @return A copy of the streaminfo of the outlet or NULL in the event that an error occurred.
  * @note It is the user's responsibility to destroy it when it is no longer needed.
- * @sa lsl_destroy_string()
+ * @sa lsl_destroy_streaminfo()
  */
 extern LIBLSL_C_API lsl_streaminfo lsl_get_info(lsl_outlet out);
 

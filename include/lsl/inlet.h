@@ -61,6 +61,7 @@ extern LIBLSL_C_API void lsl_destroy_inlet(lsl_inlet in);
  * expired) or #lsl_lost_error (if the stream source has been lost).
  * @return A copy of the full streaminfo of the inlet or NULL in the event that an error happened.
  * @note It is the user's responsibility to destroy it when it is no longer needed.
+ * @sa lsl_destroy_inlet()
  */
 extern LIBLSL_C_API lsl_streaminfo lsl_get_fullinfo(lsl_inlet in, double timeout, int32_t *ec);
 
