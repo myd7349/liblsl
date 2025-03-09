@@ -69,6 +69,7 @@ extern LIBLSL_C_API int32_t lsl_push_sample_v(lsl_outlet out, const void *data);
 /// @}
 /** @copydoc lsl_push_sample_f
  * @param timestamp Optionally the capture time of the sample, in agreement with
+ * lsl_local_clock(); if omitted, the current time is used.
  * @{
  */
 extern LIBLSL_C_API int32_t lsl_push_sample_ft(lsl_outlet out, const float *data, double timestamp);
