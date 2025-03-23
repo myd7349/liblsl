@@ -172,26 +172,26 @@ function(installLSLApp target)
 	# If we are not building liblsl, and the (app) target is not using system liblsl
 	# (LSL_UNIXFOLDERS is maybe a poor proxy for use of system liblsl...),
 	# then the application needs to have liblsl in an expected location.
-	if(NOT TARGET liblsl AND NOT LSL_UNIXFOLDERS)
+	if(NOT TARGET lsl AND NOT LSL_UNIXFOLDERS)
 		if(APPLE AND target_is_bundle)
 			# Copy the dylib into the bundle
-			install(FILES $<TARGET_FILE:LSL::lsl>
+			install(FILES $<TARGET_FILE:lsl>
 				DESTINATION ${CMAKE_INSTALL_BINDIR}/${target}.app/Contents/MacOS/
 				COMPONENT ${SHAREDLIBCOMPONENT})
 		else()
 			# Copy the dll/dylib/so next to the executable binary.
-			install(FILES $<TARGET_FILE:LSL::lsl>
+			install(FILES $<TARGET_FILE:lsl>
 				DESTINATION ${CMAKE_INSTALL_BINDIR}
 				COMPONENT ${SHAREDLIBCOMPONENT})
 		endif(APPLE AND target_is_bundle)
-	endif(NOT TARGET liblsl AND NOT LSL_UNIXFOLDERS)
+	endif(NOT TARGET lsl AND NOT LSL_UNIXFOLDERS)
 	# Mac bundles need further fixup (mostly for 3rd party libs)
 	# Only use fixup_bundle for non-Qt, as it is too complicated to provide all Qt libs
 	#  to the third argument of fixup_bundle, especially when macdeployqt can do it for us.
 	if(APPLE AND target_is_bundle AND NOT qtapp)
 		install(CODE
 			"
-				get_filename_component(LIBDIR $<TARGET_FILE:LSL::lsl> DIRECTORY)
+				get_filename_component(LIBDIR $<TARGET_FILE:lsl> DIRECTORY)
 				message(STATUS \${LIBDIR})
 				include(BundleUtilities)
 				set(BU_CHMOD_BUNDLE_ITEMS ON)
