@@ -119,8 +119,9 @@ add_library(lslobj OBJECT
 if(LSL_BUNDLED_PUGIXML)
 	message(STATUS "Using bundled pugixml")
 	target_sources(lslobj PRIVATE thirdparty/pugixml/pugixml.cpp)
-	target_include_directories(lslobj SYSTEM PUBLIC
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/pugixml>)
+	target_include_directories(lslobj
+		PUBLIC
+			$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/pugixml>)
 else()
 	message(STATUS "Using system pugixml")
 	find_package(pugixml REQUIRED)
@@ -169,8 +170,9 @@ find_package(Threads REQUIRED)
 add_library(lslboost INTERFACE)
 if(LSL_BUNDLED_BOOST)
 	message(STATUS "Using bundled Boost")
-	target_include_directories(lslboost SYSTEM INTERFACE
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/lslboost>)
+	target_include_directories(lslboost
+		INTERFACE
+			$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/lslboost>)
 else()
 	message(STATUS "Using system Boost")
 	find_package(Boost REQUIRED)
@@ -194,7 +196,7 @@ target_include_directories(lslobj
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>
 	)
 target_include_directories(lslobj
-	SYSTEM PUBLIC
+	PUBLIC
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/thirdparty/loguru>
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/thirdparty/asio>
 )
