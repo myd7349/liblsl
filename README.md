@@ -29,9 +29,11 @@ Precompiled packages are uploaded
 
 liblsl is also available via the following package managers:
 
-- [vcpkg](https://vcpkg.io)
-- [Conan](https://conan.io/center/liblsl)
+- [vcpkg](https://vcpkg.io/en/package/liblsl)
+- [Conan](https://conan.io/center/recipes/liblsl)
 - [homebrew](https://brew.sh/) via `brew install labstreaminglayer/tap/lsl`
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/liblsl.svg?columns=1)](https://repology.org/project/liblsl/versions)
 
 If you cannot find a liblsl for you via any of the above methods, then fear not because for most users it is simple to build.
 
