@@ -54,6 +54,11 @@ install(TARGETS ${LSLTargets}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     FRAMEWORK DESTINATION ${CMAKE_INSTALL_FRAMEWORK_DIR}
 )
+if(MSVC AND NOT LSL_BUILD_STATIC)
+    install(FILES $<TARGET_PDB_FILE:lsl>
+        DESTINATION "${CMAKE_INSTALL_BINDIR}" OPTIONAL
+    )
+endif()
 # Unfortunately, `INCLUDES DESTINATION` does not work.
 # PUBLIC_HEADER does not work because it flattens the tree.
 # FILE_SET is preferable but does not work with frameworks.

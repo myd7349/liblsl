@@ -32,6 +32,11 @@ endif()
 #  objects are linked directly into lsl, so consumers don't need lslobj.
 target_link_libraries(lsl PRIVATE $<BUILD_INTERFACE:lslobj>)
 
+if(MSVC AND NOT LSL_BUILD_STATIC)
+    target_compile_options(lsl PRIVATE $<$<CONFIG:Release>:/Zi>)
+    target_link_options(lsl PRIVATE "$<$<CONFIG:Release>:/DEBUG;/OPT:REF;/OPT:ICF>")
+endif()
+
 # Set the include directories for the lsl target.
 # Note: We had to link lslobj as a PRIVATE dependency, therefore we must manually expose the include directories
 if(APPLE AND LSL_FRAMEWORK)
