@@ -4,7 +4,10 @@ if(CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
 
     add_executable(lslver testing/lslver.c)
     target_link_libraries(lslver PRIVATE lsl)
-    set_target_properties(lslver PROPERTIES FOLDER "liblsl")
+    set_target_properties(lslver PROPERTIES
+        FOLDER "liblsl"
+        LINKER_LANGUAGE CXX
+    )
     if(LSL_INSTALL AND NOT IOS)
         install(TARGETS lslver RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
     endif()
